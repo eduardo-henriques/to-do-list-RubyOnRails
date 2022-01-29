@@ -1,8 +1,10 @@
 <h1>To do List</h1>
+
 <ul>
-    <% @todos.todo.each do |todo| %>
-        <li>
-            <%= todo.name%>
-        </li>
-    <%end%>
+  <% @todos.each do |todo| %>
+    <li>
+      <%= link_to todo.name, todo %>
+    </li>
+  <% end %>
 </ul>
+
