@@ -1,21 +1,29 @@
 <h1>New to do</h1>
 
-<%= form_with model: @todo do |form| %>
+<%= form_with model: @todos do |form| %>
   <div>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
+    <% @todo.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
+    <% @todo.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
+    <%= form.label :priority %><br>
     <%= form.select :priority, ["Low","Medium","High"] %><br>
   </div>
 
   <div>
+    <%= form.label :done %><br>
     <%= form.radio_button :done, "true" %>
     <%= form.label :done, "Completed" %>
     <%= form.radio_button :done, "false" %>

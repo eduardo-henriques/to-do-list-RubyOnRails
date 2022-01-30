@@ -12,7 +12,7 @@ class ToDoListController < ApplicationController
   end
 
   def create
-    @todo = ToDoList.new(name:"...",description:"...",done:false,priority:"...")
+    @todo = ToDoList.new(todo_params)
 
     if @todo.save
       redirect_to @todo
@@ -23,6 +23,6 @@ class ToDoListController < ApplicationController
 
   private
     def todo_params
-      params.require(:todo).permite(:name,:description,:priority,:done)
+      params.require(:todo).permit(:name,:description,:priority,:done)
     end
 end
