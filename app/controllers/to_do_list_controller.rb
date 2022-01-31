@@ -23,6 +23,6 @@ class ToDoListController < ApplicationController
 
   private
     def todo_params
-      params.require(:todo).permit(:name,:description,:priority,:done)
+      params.require(:to_do_list).permit(:name,:description,:priority,:done)
     end
 end
