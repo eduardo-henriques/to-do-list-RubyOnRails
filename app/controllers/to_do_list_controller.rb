@@ -21,6 +21,26 @@ class ToDoListController < ApplicationController
     end
   end
 
+  def edit
+    @todo = ToDoList.find(params[:id])
+  end
+
+  def update
+    @todo = ToDoList.find(params[:id])
+
+    if @todo.update(name: params[:to_do_list][:name], description: params[:to_do_list][:description], priority: params[:to_do_list][:priority], done: params[:to_do_list][:done])
+      redirect_to @todo
+    else
+      render :edit, status: :unprocessable_entity
+  end
+
+  def destroy
+    @todo = ToDoList.find(params[:id])
+    @todo.destroy
+
+    redirect_to to_do_list_index_path
+  end
+
   private
     def todo_params
       params.require(:to_do_list).permit(:name,:description,:priority,:done)

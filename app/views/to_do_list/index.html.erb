@@ -4,6 +4,8 @@
   <% @todos.each do |todo| %>
     <li>
       <%= link_to todo.name, todo %>
+      <%= link_to 'Edit', edit_to_do_list_path(todo)%>
+      <%= link_to 'Delete', to_do_list_path(todo), method: :delete, data: {confirm: "Você tem certeza?"}%>
     </li>
   <% end %>
 </ul>
