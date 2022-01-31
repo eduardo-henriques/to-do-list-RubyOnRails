@@ -1,6 +1,6 @@
 <h1>New to do</h1>
 
-<%= form_with model: @todos do |form| %>
+<%= form_with scope: :to_do_list, url: to_do_list_index_path, local: true do |form| %>
   <div>
     <%= form.label :name %><br>
     <%= form.text_field :name %>
@@ -19,15 +19,21 @@
 
   <div>
     <%= form.label :priority %><br>
-    <%= form.select :priority, ["Low","Medium","High"] %><br>
+    <%= form.select :priority, ["Low", "Medium", "High"] %>
+    <% @todo.errors.full_messages_for(:priority).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
-    <%= form.label :done %><br>
-    <%= form.radio_button :done, "true" %>
-    <%= form.label :done, "Completed" %>
-    <%= form.radio_button :done, "false" %>
-    <%= form.label :done, "Not started" %>
+  <%= form.label :done %><br>
+  <%= form.radio_button :done, "true" %>
+  <%= form.label :done, "Completed" %>
+  <%= form.radio_button :done, "false" %>
+  <%= form.label :age, "Not started" %>
+  <% @todo.errors.full_messages_for(:done).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
   </div>
 
   <div>
