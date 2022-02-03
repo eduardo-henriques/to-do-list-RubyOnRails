@@ -3,7 +3,9 @@
 <ul>
   <% @todos.each do |todo| %>
     <li>
-      <%= link_to todo.name, list_to_do_list_path(todo.id) %>
+      <%= link_to todo.name, list_to_do_list_path(todo.list_id,todo.id) %>
+      <%= link_to "Edit", edit_list_to_do_list_path(todo.list_id,todo.id) %>
+      <%= link_to "Delete", list_to_do_list_path(todo.list_id,todo.id), method: :delete, data: {confirm: "Você tem certeza?"}%>
     </li>
   <% end %>
 </ul>

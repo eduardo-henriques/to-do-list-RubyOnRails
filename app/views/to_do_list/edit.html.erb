@@ -1,6 +1,6 @@
 <h1>Edit to do</h1>
  
-<%= form_with model: @todo, local: true do |form|  %>
+<%= form_with model: [@list, @todo], local: true do |form|  %>
 
   <% if @todo.errors.any? %>
     <div id="error_explanation">
@@ -45,4 +45,4 @@
  
 <% end %>
  
-<%= link_to 'Back', to_do_list_index_path %>
+<%= link_to 'Back', list_to_do_list_index_path %>

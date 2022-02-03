@@ -24,14 +24,16 @@ class ToDoListController < ApplicationController
   end
 
   def edit
-    @todo = ToDoList.find(params[:id])
+    @list = List.find(params[:list_id])
+    @todo = @list.to_do_lists.find(params[:id])
   end
 
   def update
-    @todo = ToDoList.find(params[:id])
+    @list = List.find(params[:list_id])
+    @todo = @list.to_do_lists.find(params[:id])
 
     if @todo.update(todo_params)
-      redirect_to @todo
+      redirect_to list_to_do_list_index_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,7 +43,7 @@ class ToDoListController < ApplicationController
     @todo = ToDoList.find(params[:id])
     @todo.destroy
 
-    redirect_to to_do_list_index_path
+    redirect_to list_to_do_list_index_path
   end
 
   private
