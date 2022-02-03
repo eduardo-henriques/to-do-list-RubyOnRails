@@ -1,6 +1,6 @@
 class ToDoListController < ApplicationController
   def index
-    @todos = ToDoList.all
+    @todos = ToDoList.where(list_id: params[:list_id])
   end
 
   def show
@@ -9,13 +9,15 @@ class ToDoListController < ApplicationController
 
   def new
     @todo = ToDoList.new
+    @list = List.find(params[:list_id])
   end
 
   def create
-    @todo = ToDoList.new(todo_params)
+    @list = List.find(params[:list_id])
+    @todo = @list.to_do_lists.new(todo_params)
 
     if @todo.save
-      redirect_to @todo
+      redirect_to list_to_do_list_index_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,6 +34,7 @@ class ToDoListController < ApplicationController
       redirect_to @todo
     else
       render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -42,7 +45,7 @@ class ToDoListController < ApplicationController
   end
 
   private
-    def todo_params
-      params.require(:to_do_list).permit(:name,:description,:priority,:done)
-    end
+  def todo_params
+    params.require(:to_do_list).permit(:name,:description,:priority,:done,:list_id)
+  end
 end

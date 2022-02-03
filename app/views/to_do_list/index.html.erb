@@ -3,12 +3,11 @@
 <ul>
   <% @todos.each do |todo| %>
     <li>
-      <%= link_to todo.name, todo %>
-      <%= link_to 'Edit', edit_to_do_list_path(todo)%>
-      <%= link_to 'Delete', to_do_list_path(todo), method: :delete, data: {confirm: "Você tem certeza?"}%>
+      <%= link_to todo.name, list_to_do_list_path(todo.id) %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to "New To do", new_to_do_list_path%>
+<%= link_to "New To do", new_list_to_do_list_path%>
+<%= link_to "Back", list_index_path%>
 
