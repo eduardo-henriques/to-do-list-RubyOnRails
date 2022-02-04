@@ -4,7 +4,8 @@ class ToDoListController < ApplicationController
   end
 
   def show
-    @todo = ToDoList.find(params[:id])
+    @list = List.find(params[:list_id])
+    @todo = @list.to_do_lists.find(params[:id])
   end
 
   def new

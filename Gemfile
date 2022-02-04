@@ -63,3 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'public_suffix', '~>4.0.6'
 gem 'rubocop'
+
+gem 'bootstrap', '~> 5.1.3'
+
+gem 'jquery-rails'

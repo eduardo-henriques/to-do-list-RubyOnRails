@@ -1,48 +1,54 @@
+<div class="new-form-container">
 <h1>Edit to do</h1>
  
-<%= form_with model: [@list, @todo], local: true do |form|  %>
+  <%= form_with model: [@list, @todo], local: true do |form|  %>
 
-  <% if @todo.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@todo.errors.count, "error") %> prohibited
-        this todo from being saved:
-      </h2>
-      <ul>
-        <% @todo.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+    <% if @todo.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@todo.errors.count, "error") %> prohibited
+          this todo from being saved:
+        </h2>
+        <ul>
+          <% @todo.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name, class:"input-field" %>
     </div>
+  
+    <div>
+      <%= form.label :description %><br>
+      <%= form.text_area :description, class:"input-field" %>
+    </div>
+
+    <div>
+      <%= form.label :priority %><br>
+      <%= form.select :priority, ["Low", "Medium", "High"] %>
+    </div>
+    <br/>
+
+    <div>
+      <%= form.label :done %><br>
+      <%= form.radio_button :done, "true" %>
+      <%= form.label :done, "Completed" %>
+      <%= form.radio_button :done, "false" %>
+      <%= form.label :age, "Not started" %>
+    </div>
+    <br/>
+  
+    <div class="submit-btn">
+      <%= form.submit %>
+    </div>
+  
   <% end %>
- 
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </div>
- 
-  <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </div>
+  
+</div>
 
-  <div>
-    <%= form.label :priority %><br>
-    <%= form.select :priority, ["Low", "Medium", "High"] %>
-  </div>
-
-  <div>
-    <%= form.label :done %><br>
-    <%= form.radio_button :done, "true" %>
-    <%= form.label :done, "Completed" %>
-    <%= form.radio_button :done, "false" %>
-    <%= form.label :age, "Not started" %>
-  </div>
- 
-  <div>
-    <%= form.submit %>
-  </div>
- 
-<% end %>
- 
-<%= link_to 'Back', list_to_do_list_index_path %>
+<br/>
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'Back', list_to_do_list_index_path, class: "notlinker" %></button>

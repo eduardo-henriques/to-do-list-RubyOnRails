@@ -31,6 +31,7 @@ class ListController < ApplicationController
         if @list.update(list_params)
             redirect_to list_index_path
         else
+
             render :edit
         end
     end

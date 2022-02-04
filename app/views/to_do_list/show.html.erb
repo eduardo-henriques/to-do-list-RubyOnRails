@@ -1,7 +1,15 @@
-<h1><%= @todo.name %></h1>
+<div class="card text-white bg-dark mb-3" style="width: 30%; ">
+  <div class="card-body">
+    <h5 class="card-title" style="border-bottom: 0.1rem solid yellow; "><%=@todo.name%></h5>
+    <p class="card-text"><%=@todo.description%></p>
+    <p class="card-text">Priority: <%=@todo.priority%></p>
+    <% if @todo.done%>
+    <p class="card-text">Completed!</p> 
+    <%else%>
+    <p class="card-text">Not completed yet</p> 
+    <%end%>
+  </div>
+</div>
 
-<p><%= @todo.priority %></p>
-<p><%= @todo.done %></p>
-<p><%= @todo.description %></p>
-<%= link_to 'Edit', edit_list_to_do_list_path(@todo)%>
-<%= link_to 'Back', list_to_do_list_index_path%>
+<button type="button" class="btn btn-outline-warning"><%= link_to 'Edit', edit_list_to_do_list_path(@todo.list_id,@todo.id), class:"notlinker" %></button>
+<button type="button" class="btn btn-outline-secondary"><%= link_to 'Back', list_to_do_list_index_path, class: "notlinker" %></button>

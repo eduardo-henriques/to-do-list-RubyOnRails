@@ -1,0 +1,59 @@
+@import 'bootstrap';
+
+.striker {
+  text-decoration: line-through;
+}
+
+.notlinker {
+  text-decoration: none;
+  color: black;
+  :hover {
+    text-decoration: line-through;
+    color: white;
+  }
+}
+
+.navbar-brand {
+  padding-left: 5rem;
+  font-size: 2rem;
+}
+
+.new-form-container {
+  background-color: #a9a9a951;
+  max-height: 100%;
+  padding-bottom: 5rem;
+  margin-top: 8rem;
+  margin-left: 23rem;
+  align-self: center;
+  width: 35%;
+  height: 100%;
+  padding-top: 5rem;
+  border-radius: 2rem;
+  border-width: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-field {
+  border-radius: 0.3rem;
+  border-width: 0.1rem;
+}
+
+.new-list-title {
+  padding-bottom: 1rem;
+}
+
+.submit-btn {
+  border-radius: 0.8rem;
+  border-width: 0.8rem;
+  border-color: lightgreen;
+  :hover {
+    background-color: #a9a9a991;
+    border-radius: 0.1rem;
+    border-color: #a9a9a991;
+    border-width: 0.1rem;
+  }
+}

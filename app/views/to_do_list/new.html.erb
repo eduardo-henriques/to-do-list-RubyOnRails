@@ -1,42 +1,47 @@
-<h1>New to do</h1>
+<div class="new-form-container">
+  <h1>New to do</h1>
 
-<%= form_with scope: :to_do_list, url: list_to_do_list_index_path, local: true do |form| %>
-  <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-    <% @todo.errors.full_messages_for(:name).each do |message| %>
+  <%= form_with scope: :to_do_list, url: list_to_do_list_index_path, local: true do |form| %>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name, class:"input-field" %>
+      <% @todo.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :description %><br>
+      <%= form.text_area :description, class:"input-field" %>
+      <% @todo.errors.full_messages_for(:description).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+
+    <div class="dropdown">
+      <%= form.label :priority %><br>
+      <%= form.select :priority, ["Low", "Medium", "High"] %>
+      <% @todo.errors.full_messages_for(:priority).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+      <br/>
+    </div>
+    <br/>
+
+    <div>
+    <%= form.label :done %><br/>
+    <%= form.radio_button :done, "true" %>
+    <%= form.label :done, "Completed" %>
+    <%= form.radio_button :done, "false" %>
+    <%= form.label :done, "Not started" %>
+    <% @todo.errors.full_messages_for(:done).each do |message| %>
       <div><%= message %></div>
     <% end %>
-  </div>
+    </div>
+    <br/>
 
-  <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-    <% @todo.errors.full_messages_for(:description).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-    <%= form.label :priority %><br>
-    <%= form.select :priority, ["Low", "Medium", "High"] %>
-    <% @todo.errors.full_messages_for(:priority).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-  <div>
-  <%= form.label :done %><br>
-  <%= form.radio_button :done, "true" %>
-  <%= form.label :done, "Completed" %>
-  <%= form.radio_button :done, "false" %>
-  <%= form.label :done, "Not started" %>
-  <% @todo.errors.full_messages_for(:done).each do |message| %>
-    <div><%= message %></div>
+    <div class="submit-btn">
+      <%= form.submit %>
+    </div>
   <% end %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
