@@ -6,10 +6,9 @@
 
 .notlinker {
   text-decoration: none;
-  color: black;
+  color: inherit;
   :hover {
-    text-decoration: line-through;
-    color: white;
+    color: inherit !important;
   }
 }
 
@@ -19,7 +18,7 @@
 }
 
 .new-form-container {
-  background-color: #a9a9a951;
+  background-color: #a9a9a971;
   max-height: 100%;
   padding-bottom: 5rem;
   margin-top: 8rem;
@@ -40,6 +39,7 @@
 .input-field {
   border-radius: 0.3rem;
   border-width: 0.1rem;
+  margin-bottom: 0.5rem;
 }
 
 .new-list-title {

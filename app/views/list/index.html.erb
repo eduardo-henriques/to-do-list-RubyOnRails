@@ -14,7 +14,7 @@
         <tr>
           <td><%= link_to list.title, list_to_do_list_index_path(list.id), class:"notlinker"%></td>
           <td><%= list.description %>
-          <td><button type="button" class="btn btn-outline-warning"><%= link_to 'Edit', edit_list_path(list.id), class:"notlinker"%></button></td>
+          <td><button type="button" class="btn btn-outline-dark"><%= link_to 'Edit', edit_list_path(list.id), class:"notlinker"%></button></td>
           <td><button type="button" class="btn btn-outline-danger"><%= link_to 'Delete', list_path(list.id), method: :delete, data: {confirm: "Você tem certeza?"}, class:"notlinker"%></button></td>
         </tr>
       <% end %>
